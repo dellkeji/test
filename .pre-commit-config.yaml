@@ -1,0 +1,18 @@
+fail_fast: true
+repos:
+- repo: https://github.com/dnephin/pre-commit-golang
+  rev: master
+  hooks:
+    - id: go-fmt
+      files: "^test1/"
+- repo: https://github.com/psf/black
+  rev: 20.8b1
+  hooks:
+  - id: black
+    args: [--config=bcs-ui/pyproject.toml]
+    files: "^test2/"
+    exclude: >
+      (?x)^(
+          .*/migrations/.*
+          | bcs-ui/backend/packages/.*
+      )$
